@@ -1,13 +1,57 @@
-window.onclick=function(e)
+var recoveryList = [];
+
+function recovery()
 {
+	for(var i=0; i<recoveryList.length; i++)
+	{
+		point = document.getElementById(recoveryList[i]);
+		var x = recoveryList[i].charAt(0);
+		var y = Number(recoveryList[i].charAt(1));
+		var a = ['A', 'C', 'E', 'G'];
+		var b = ['B', 'D', 'F', 'H'];
+		var m = [1, 3, 5, 7];
+		var n = [2, 4, 6, 8];
+		if(x == "A" || x == "C" || x == "E" || x == "G")
+		{
+			if(y == 1 || y == 3 || y == 5 || y == 7)
+			{
+				point.style.background = "#999";
+			}
+			else if(y == 2 || y == 4 || y == 6 || y == 8)
+			{
+				point.style.background = "white";
+			}
+		}
+		else if(x == "B" || x == "D" || x == "F" || x == "H")
+		{
+			if(y == 1 || y == 3 || y == 5 || y == 7)
+			{
+				point.style.background = "white";
+			}
+			else if(y == 2 || y == 4 || y == 6 || y == 8)
+			{
+				point.style.background = "#999";
+			}
+		}
+	}
+	recoveryList = [];
+}
+
+window.onclick=function(e)
+{	
+	recovery();
 	var elem = e ? e.target : window.event.srcElement;
 	elem.style.background = 'blue';
 	list = pointSearch(elem.id);
+	
 	for(var i=0; i<list.length; i++)
 	{
-		j = document.getElementById(list[i])
+		j = document.getElementById(list[i]);
+		recoveryList.push(list[i]);
 		j.style.background = 'green';
 	}
+
+	recoveryList.push(elem.id);
 }
 
 function pointSearch(id)

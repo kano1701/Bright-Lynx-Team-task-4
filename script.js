@@ -7,10 +7,6 @@ function recovery()
 		point = document.getElementById(recoveryList[i]);
 		var x = recoveryList[i].charAt(0);
 		var y = Number(recoveryList[i].charAt(1));
-		var a = ['A', 'C', 'E', 'G'];
-		var b = ['B', 'D', 'F', 'H'];
-		var m = [1, 3, 5, 7];
-		var n = [2, 4, 6, 8];
 		if(x == "A" || x == "C" || x == "E" || x == "G")
 		{
 			if(y == 1 || y == 3 || y == 5 || y == 7)

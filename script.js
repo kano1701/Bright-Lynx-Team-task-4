@@ -1,31 +1,21 @@
 var recoveryList = [];
 
-function recovery()
-{
-	for(var i=0; i<recoveryList.length; i++)
-	{
+function recovery() {
+	// очищает поле
+	for(var i=0; i<recoveryList.length; i++) {
 		point = document.getElementById(recoveryList[i]);
 		var x = recoveryList[i].charAt(0);
 		var y = Number(recoveryList[i].charAt(1));
-		if(x == "A" || x == "C" || x == "E" || x == "G")
-		{
-			if(y == 1 || y == 3 || y == 5 || y == 7)
-			{
+		if(x == "A" || x == "C" || x == "E" || x == "G") {
+			if(y == 1 || y == 3 || y == 5 || y == 7) {
 				point.style.background = "#999";
-			}
-			else if(y == 2 || y == 4 || y == 6 || y == 8)
-			{
+			} else if(y == 2 || y == 4 || y == 6 || y == 8) {
 				point.style.background = "white";
 			}
-		}
-		else if(x == "B" || x == "D" || x == "F" || x == "H")
-		{
-			if(y == 1 || y == 3 || y == 5 || y == 7)
-			{
+		} else if(x == "B" || x == "D" || x == "F" || x == "H") {
+			if(y == 1 || y == 3 || y == 5 || y == 7) {
 				point.style.background = "white";
-			}
-			else if(y == 2 || y == 4 || y == 6 || y == 8)
-			{
+			} else if(y == 2 || y == 4 || y == 6 || y == 8) {
 				point.style.background = "#999";
 			}
 		}
@@ -33,15 +23,16 @@ function recovery()
 	recoveryList = [];
 }
 
-window.onclick=function(e)
-{	
+window.onclick=function(e) {
 	recovery();
+	// получаем id нажатой пользователем клетки, окрашиваем ее в голубой
+	// потом в pointSearch получаем список походящих клеток и окрашиваем их
+	// в зеленый
 	var elem = e ? e.target : window.event.srcElement;
 	elem.style.background = 'blue';
 	list = pointSearch(elem.id);
-	
-	for(var i=0; i<list.length; i++)
-	{
+
+	for(var i=0; i<list.length; i++) {
 		j = document.getElementById(list[i]);
 		recoveryList.push(list[i]);
 		j.style.background = 'green';
@@ -50,13 +41,12 @@ window.onclick=function(e)
 	recoveryList.push(elem.id);
 }
 
-function pointSearch(id)
-{
+function pointSearch(id) {
+	// функция для поиска точек аналогична функции из 2 задачи
 	var x = id.charAt(0);
 	var y = Number(id.charAt(1));
 
-	switch(x)
-	{
+	switch(x) {
 		case 'A':
 			x = 1;
 			break;
@@ -95,15 +85,12 @@ function pointSearch(id)
 
 	var str = [];
 
-	for(var i = 1; i < 9; i++)
-	{
+	for(var i = 1; i < 9; i++) {
 		var key = "point"+i;
 		var j = 1;
 
-		if ((allPoints[key][0]>0 && allPoints[key][1]>0) && (allPoints[key][0]<9 && allPoints[key][1]<9))
-		{
-			switch(allPoints[key][0])
-			{
+		if ((allPoints[key][0]>0 && allPoints[key][1]>0) && (allPoints[key][0]<9 && allPoints[key][1]<9)) {
+			switch(allPoints[key][0]) {
 				case 1:
 					allPoints[key][0] = "A";
 					break;
